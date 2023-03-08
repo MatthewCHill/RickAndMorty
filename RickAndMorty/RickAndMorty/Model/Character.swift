@@ -16,7 +16,6 @@ struct PageInfo: Codable {
     let count: Int
     let pages: Int
     let next: String
-    let prev: String?
 }
 
 struct Character: Codable {
@@ -24,9 +23,8 @@ struct Character: Codable {
     let name: String
     let status: String
     let species: String
-    let type: String
     let gender: String
     let image: String
-    let espisode: [String]
 }
+
 
