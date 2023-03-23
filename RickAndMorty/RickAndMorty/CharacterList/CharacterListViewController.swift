@@ -13,38 +13,15 @@ class CharacterListViewController: UIViewController {
 
     @IBOutlet weak var characterListTableView: UITableView!
     
+    var viewModel: CharacterListViewModel!
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = CharacterListViewModel(delegate: self)
         characterListTableView.dataSource = self
-        fetchCharacterList()
     }
     
-    // MARK: - Properties
-    var topLevelCharacterDict: TopLevelCharacterDict?
-    var characters: [Character] = []
-    
-    
-    // MARK: - Functions
-    
-    func fetchCharacterList() {
-        
-        NetworkService.fetchCharacterList { [weak self] result in
-            switch result {
-                
-            case .success(let topLevel):
-                self?.topLevelCharacterDict = topLevel
-                self?.characters.append(contentsOf: topLevel.results)
-                DispatchQueue.main.async {
-                    self?.characterListTableView.reloadData()
-                }
-            case .failure(let error):
-                print(error.errorDescription ?? "Unknown Error")
-            }
-        }
-    }
-    
-
     /*
     // MARK: - Navigation
 
@@ -61,17 +38,23 @@ class CharacterListViewController: UIViewController {
 
 extension CharacterListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+        return viewModel.characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath) as? CharacterTableViewCell else { return UITableViewCell()}
         
-        let character = characters[indexPath.row]
+        let character = viewModel.characters[indexPath.row]
         cell.fetchCharacterImage(forCharacter: character)
         
         return cell
     }
-    
-    
+}
+
+extension CharacterListViewController: CharacterListViewModelDelegate {
+    func charactersFetchedSuccessfully() {
+        DispatchQueue.main.async {
+            self.characterListTableView.reloadData()
+        }
+    }
 }
