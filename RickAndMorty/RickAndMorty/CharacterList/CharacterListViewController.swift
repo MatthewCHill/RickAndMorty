@@ -45,7 +45,7 @@ extension CharacterListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath) as? CharacterTableViewCell else { return UITableViewCell()}
         
         let character = viewModel.characters[indexPath.row]
-        cell.fetchCharacterImage(forCharacter: character)
+        cell.configure(with: character)
         
         return cell
     }

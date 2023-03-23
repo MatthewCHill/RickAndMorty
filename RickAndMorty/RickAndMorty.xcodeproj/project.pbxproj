@@ -22,6 +22,7 @@
 		3497166829CCBDEE00EE5E82 /* RickAndMortyCharacterListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3497166729CCBDEE00EE5E82 /* RickAndMortyCharacterListService.swift */; };
 		3497166A29CCBE4200EE5E82 /* RickAndMortyCharacterListEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3497166929CCBE4200EE5E82 /* RickAndMortyCharacterListEndpoint.swift */; };
 		3497166E29CCC1A400EE5E82 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3497166D29CCC1A400EE5E82 /* CharacterListViewModel.swift */; };
+		3497167029CCCBF500EE5E82 /* ServiceRequestingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3497166F29CCCBF500EE5E82 /* ServiceRequestingImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3497166729CCBDEE00EE5E82 /* RickAndMortyCharacterListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyCharacterListService.swift; sourceTree = "<group>"; };
 		3497166929CCBE4200EE5E82 /* RickAndMortyCharacterListEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyCharacterListEndpoint.swift; sourceTree = "<group>"; };
 		3497166D29CCC1A400EE5E82 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
+		3497166F29CCCBF500EE5E82 /* ServiceRequestingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestingImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				343D083229B80ACF00B13DBD /* CharacterTableViewCell.swift */,
+				3497166F29CCCBF500EE5E82 /* ServiceRequestingImageView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3497167029CCCBF500EE5E82 /* ServiceRequestingImageView.swift in Sources */,
 				343D082629B7FAAD00B13DBD /* Character.swift in Sources */,
 				343D080F29B7F12000B13DBD /* AppDelegate.swift in Sources */,
 				343D081129B7F12000B13DBD /* SceneDelegate.swift in Sources */,

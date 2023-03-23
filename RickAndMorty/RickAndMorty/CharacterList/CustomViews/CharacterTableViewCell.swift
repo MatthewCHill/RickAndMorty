@@ -11,24 +11,20 @@ class CharacterTableViewCell: UITableViewCell {
 
  // MARK: - Outlets
     
-    @IBOutlet weak var characterImageView: UIImageView!
+    @IBOutlet weak var characterImageView: ServiceRequestingImageView!
     @IBOutlet weak var characterNameLabel: UILabel!
     
     // MARK: - Functions
     
-    func fetchCharacterImage(forCharacter character: Character) {
+    func configure(with character: Character) {
+        
         characterNameLabel.text = character.name
-        NetworkService.fetchCharacterImage(for: character) { [weak self] result in
-            switch result {
-                
-            case .success(let image):
-                DispatchQueue.main.async {
-                    self?.characterImageView.image = image
-                }
-            case .failure(let error):
-                print(error.errorDescription ?? "Unknown Error")
-            }
-        }
+        fetchImage(with: character)
+    }
+    
+    func fetchImage(with character: Character) {
+        guard let finalURL = URL(string: character.image) else {return}
+        characterImageView.fetchImage(using: finalURL)
         
     }
 }
