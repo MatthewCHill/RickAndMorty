@@ -14,12 +14,14 @@ class CharacterListViewController: UIViewController {
     
     // MARK: - Properties
     var viewModel: CharacterListViewModel!
+    let activityIndicator = UIActivityIndicatorView()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = CharacterListViewModel(delegate: self)
         characterListTableView.dataSource = self
+        characterListTableView.delegate = self
     }
     
     
@@ -42,7 +44,7 @@ class CharacterListViewController: UIViewController {
 
 // MARK: - Extensions
 
-extension CharacterListViewController: UITableViewDataSource {
+extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.characters.count
     }
@@ -54,6 +56,16 @@ extension CharacterListViewController: UITableViewDataSource {
         cell.configure(with: character)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let topLevelDict = viewModel.topLevelDict,
+        let nextURL = URL(string: topLevelDict.info.next) else { return }
+        characterListTableView.tableFooterView = activityIndicator
+        let endOfCharacterList = viewModel.characters.count - 2
+        if indexPath.row == endOfCharacterList {
+            viewModel.fetchNextCharacters(with: nextURL)
+        }
     }
 }
 
