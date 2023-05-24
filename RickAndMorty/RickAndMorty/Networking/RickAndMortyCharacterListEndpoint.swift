@@ -14,7 +14,7 @@ enum RickAndMortyCharacterListEndpoint {
     case characterList
     
     var fullURL: URL? {
-        guard var url = Self.baseURL,
+        guard let url = Self.baseURL,
               var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return nil}
         switch self {
             

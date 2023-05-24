@@ -19,12 +19,12 @@ struct PageInfo: Codable {
 }
 
 struct Character: Codable {
-    let id: Int
-    let name: String
-    let status: String
-    let species: String
-    let gender: String
-    let image: String
+    var id: Int?
+    var name: String?
+    var status: String?
+    var species: String?
+    var gender: String?
+    var image: String
 }
 
 

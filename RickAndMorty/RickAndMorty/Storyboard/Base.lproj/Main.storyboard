@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LXd-ll-pvO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LXd-ll-pvO">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -60,6 +61,7 @@
                                         <connections>
                                             <outlet property="characterImageView" destination="8jv-wa-ftj" id="NtU-iI-8a8"/>
                                             <outlet property="characterNameLabel" destination="D1t-sF-sIJ" id="kpe-u3-1Nq"/>
+                                            <segue destination="mXH-KN-2fx" kind="showDetail" identifier="toCharacterDetail" id="HI0-0d-xQ1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -85,6 +87,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJU-Y9-v3g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="976.33587786259534" y="-36.619718309859159"/>
+        </scene>
+        <!--Character Detail View Controller-->
+        <scene sceneID="RX2-H0-zpY">
+            <objects>
+                <viewController id="mXH-KN-2fx" customClass="CharacterDetailViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2MM-6t-Zxv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o6R-9J-zxB">
+                                <rect key="frame" x="96.666666666666686" y="100" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Dmc-yt-gwq"/>
+                                    <constraint firstAttribute="width" secondItem="o6R-9J-zxB" secondAttribute="height" id="Ggi-Am-yhi"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="4ZS-0c-KOv">
+                                <rect key="frame" x="12" y="350" width="369" height="115"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGC-eR-F91">
+                                        <rect key="frame" x="0.0" y="0.0" width="369" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(status)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5L-Tq-ALz">
+                                        <rect key="frame" x="0.0" y="47.333333333333314" width="369" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(species)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H40-hg-y1q">
+                                        <rect key="frame" x="0.0" y="94.666666666666686" width="369" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CLr-VU-xtj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4ZS-0c-KOv" firstAttribute="top" secondItem="o6R-9J-zxB" secondAttribute="bottom" constant="50" id="69R-UE-XzV"/>
+                            <constraint firstItem="o6R-9J-zxB" firstAttribute="centerX" secondItem="CLr-VU-xtj" secondAttribute="centerX" id="BSt-w1-hwq"/>
+                            <constraint firstItem="CLr-VU-xtj" firstAttribute="trailing" secondItem="4ZS-0c-KOv" secondAttribute="trailing" constant="12" id="bHi-PY-eMT"/>
+                            <constraint firstItem="o6R-9J-zxB" firstAttribute="top" secondItem="CLr-VU-xtj" secondAttribute="top" constant="100" id="haR-0w-KDo"/>
+                            <constraint firstItem="4ZS-0c-KOv" firstAttribute="leading" secondItem="CLr-VU-xtj" secondAttribute="leading" constant="12" id="rWa-6H-7k7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="characterImage" destination="o6R-9J-zxB" id="aPP-MM-GP0"/>
+                        <outlet property="characterNameLabel" destination="IGC-eR-F91" id="JV8-KT-LNA"/>
+                        <outlet property="characterSpeciesLabel" destination="H40-hg-y1q" id="QWC-Ma-5k6"/>
+                        <outlet property="characterStatusLabel" destination="D5L-Tq-ALz" id="efj-1s-mRD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nhY-Gv-KIs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860" y="-35"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zUE-Pv-UnI">

@@ -10,9 +10,9 @@ import UIKit
 class CharacterListViewController: UIViewController {
     
     // MARK: - Outlets
-
     @IBOutlet weak var characterListTableView: UITableView!
     
+    // MARK: - Properties
     var viewModel: CharacterListViewModel!
     
     // MARK: - Lifecycle
@@ -22,16 +22,22 @@ class CharacterListViewController: UIViewController {
         characterListTableView.dataSource = self
     }
     
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toCharacterDetail" {
+            if let indexPath = characterListTableView.indexPathForSelectedRow {
+                guard let destinationVC = segue.destination as? CharacterDetailViewController,
+                      let cell = sender as? CharacterTableViewCell else { return }
+                
+                let image = cell.characterImageView.image
+                let character = viewModel.characters[indexPath.row]
+                
+                destinationVC.updateView(character: character, image: image)
+            }
+        }
     }
-    */
-
 }
 
 // MARK: - Extensions
