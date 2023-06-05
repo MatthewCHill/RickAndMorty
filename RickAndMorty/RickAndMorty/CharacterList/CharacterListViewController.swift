@@ -33,10 +33,13 @@ class CharacterListViewController: UIViewController {
                 guard let destinationVC = segue.destination as? CharacterDetailViewController,
                       let cell = sender as? CharacterTableViewCell else { return }
                 
-                let image = cell.characterImageView.image
+             //   let image = cell.characterImageView.image
                 let character = viewModel.characters[indexPath.row]
                 
-                destinationVC.updateView(character: character, image: image)
+                DispatchQueue.main.async {
+                    
+                    destinationVC.updateView(character: character)
+                }
             }
         }
     }

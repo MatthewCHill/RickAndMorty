@@ -25,6 +25,5 @@ class CharacterTableViewCell: UITableViewCell {
     func fetchImage(with character: Character) {
         guard let finalURL = URL(string: character.image) else {return}
         characterImageView.fetchImage(using: finalURL)
-        
     }
 }

@@ -21,14 +21,20 @@ class CharacterDetailViewController: UIViewController {
     }
     
     // MARK: - Functions
-    func updateView(character: Character, image: UIImage?) {
-        loadViewIfNeeded()
-        if let image {
-            characterImage.image = image
+    func updateView(character: Character) {
+        fetchImage(with: character) {            
+            self.characterNameLabel.text = character.name
+            self.characterStatusLabel.text = character.status
+            self.characterSpeciesLabel.text = character.species
         }
-        characterNameLabel.text = character.name
-        characterStatusLabel.text = character.status
-        characterSpeciesLabel.text = character.species
+    }
+    
+    func fetchImage(with character: Character, completion: @escaping() -> Void) {
+        guard let finalURL = URL(string: character.image) else {return}
+        DispatchQueue.main.async {
+            self.characterImage.fetchImage(using: finalURL)
+        }
+        completion()
     }
 } // End Of Class
 
